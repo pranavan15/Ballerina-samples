@@ -4,7 +4,7 @@ Ballerina runtime will provides some built-in utilities to handle the connector 
 
 
 # About this sample
-This sample provides a service which can be consumed by users to get the stock exchange rates. It basically calls Foreign exchange rates and currency conversion API in the backend to get these information.
+This sample provides a service which can be consumed by users to get the stock exchange rates. It basically calls the Foreign exchange rates and currency conversion API in the backend to get these information.
 `ExchangeRatesWithRetry.bal` uses retry resilience option available in Ballerina while `ExchangeRatesWithTimeOut.bal`uses timeout option.
 This sample has the following functionalities.
 
