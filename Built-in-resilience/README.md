@@ -20,6 +20,7 @@ This sample has the following functionalities.
 
 # To run the sample
 `$ ballerina run ExchangeRatesWithRetry.bal`
+
 `$ ballerina run ExchangeRatesWithTimeOut.bal`
 
 # Invoke services using curl
