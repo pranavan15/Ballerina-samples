@@ -8,4 +8,4 @@
   
   3. Add the <ballerina_home>/bin directory to your $PATH environment variable so that you can run the Ballerina commands from anywhere.
 
-  4. After setting up <ballerina_home>, run: $ ballerina run SAMPLE-NAME.bal
+  4. After setting up <ballerina_home>, run: `$ ballerina run SAMPLE-NAME.bal`
