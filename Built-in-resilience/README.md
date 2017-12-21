@@ -115,7 +115,7 @@ Navigate to File -> Open Program Directory, and pick the project folder (Balleri
 
 Click on **Run**(Ctrl+Shift+R) button in the tool bar.
 
-![alt text](https://github.com/lasinducharith/ballerina-rest-service/images/Resilience.png)
+![alt text](https://github.com/pranavan15/Ballerina-samples/blob/master/Built-in-resilience/images/Resilience.png)
 
 
 ### Running in Intellij IDEA
