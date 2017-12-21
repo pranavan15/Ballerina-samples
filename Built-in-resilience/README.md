@@ -90,7 +90,7 @@ service<http> ExchangeRatesService {
 Similar to retry, When creating an `http:HttpClient`, you can pass the timeout configurations in the option struct available.
 `endpointTimeout: 30000` specifies the timeout duration we need.
 
-### Running Service in Command-line
+## Running Service in Command-line
 You can run the ballerina service/application from the command line. Execute following command to compile and execute the ballerina program.
 
 ```
@@ -109,7 +109,7 @@ $ballerina build ExchangeRatesWithTimeOut.bal
 $balleina run ExchangeRatesWithTimeOut.balx
 ```
 
-### Running Service in Composer
+## Running Service in Composer
 Start Composer https://ballerinalang.org/docs/quick-tour/quick-tour/#run-the-composer
 Navigate to File -> Open Program Directory, and pick the project folder (Ballerina-samples/Built-in-resilience).
 
@@ -118,10 +118,10 @@ Click on **Run**(Ctrl+Shift+R) button in the tool bar.
 ![alt text](https://github.com/pranavan15/Ballerina-samples/blob/master/Built-in-resilience/images/Resilience.png)
 
 
-### Running in Intellij IDEA
+## Running in Intellij IDEA
 <TODO>
 
-### Running in VSCode
+## Running in VSCode
 <TODO>
 
 
