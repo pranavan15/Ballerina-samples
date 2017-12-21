@@ -185,6 +185,7 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response, e;
     }
     
+    // Newly Added
     @Description{ value : "Returns a collection of the most recent Tweets posted by the user."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
@@ -200,7 +201,8 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         response, e = twitterEP.get(tweetPath, request);
         return response, e;
     }
-    
+
+    // Newly Added
     @Description{ value : "Returns a collection of user objects for users following the specified user."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
@@ -216,7 +218,8 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         response, e = twitterEP.get(tweetPath, request);
         return response, e;
     }
-    
+
+    // Newly Added
     @Description{ value : "Returns a collection of user objects for every user the specified user is following."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
