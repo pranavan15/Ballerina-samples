@@ -6,7 +6,7 @@ service<http> ExchangeRatesService {
         create http:HttpClient("http://api.fixer.io", {
             retryConfig: {
                 count: 4,
-                interval:100
+                             interval:100
             }
         });
     }
