@@ -3,8 +3,8 @@ Following guide walks you through the steps of creating a service, which consume
 
 ## What you'll build
 You'll build a service, which can be consumed by users to get his/her twitter account summary.  
-Service will have the following resources, which are consumable through HTTP POST requests. 
-
+Service has three resources, which are consumable through HTTP POST requests. 
+Eg:
 ```
 http://localhost:9090/twitterSummary/getTweetsByTime
 ```
