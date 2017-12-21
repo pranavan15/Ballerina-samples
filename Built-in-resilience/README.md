@@ -128,7 +128,7 @@ Click on **Run**(Ctrl+Shift+R) button in the tool bar.
 ## Test the Service
 Now that the service is up, visit http://localhost:9090/ExchangeRatesService/[resource]/[option] to access an available resource you need.
 
-## Invoke services using curl
+## Invoke service using curl
 ```
 eg: `$ curl -v "http://localhost:9090/ExchangeRatesService/getLatestRates/USD"`
 ```
