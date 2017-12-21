@@ -168,7 +168,6 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
     action getTopTrendsByPlace(string locationId) (http:Response, http:HttpConnectorError) {
-        // Action Newly Added
         string urlParams;
         http:Request request = {};
         http:Response response = {};
@@ -190,6 +189,7 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
     action getUserTimelineStatuses() (http:Response, http:HttpConnectorError) {
+        // Action Newly Added
         http:Request request = {};
         http:Response response = {};
         map parameters = {};
