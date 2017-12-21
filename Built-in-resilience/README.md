@@ -49,7 +49,7 @@ Download and unzip or clone the source repository for this guide in https://gith
 ### Retry
 `ExchangeRatesWithRetry.bal` file shows how to use the retry resilience option available in Ballerina.
 
-```
+```ballerina
 @http:configuration {basePath:"/ExchangeRatesService"}
 service<http> ExchangeRatesService {
     endpoint<http:HttpClient> exchangeRatesEP {
@@ -64,7 +64,7 @@ service<http> ExchangeRatesService {
 
 When creating an `http:HttpClient`, you can pass the retry configurations in the option struct available.
 
-```
+```ballerina
        retryConfig: {
             count: 4,
             interval: 100
@@ -77,7 +77,7 @@ Above block determines the configurations we needed for the retry option. `count
 ### Timeout
 `ExchangeRatesWithTimeOut.bal` file shows how to use the timeout resilience option available in Ballerina.
 
-```
+```ballerina
 @http:configuration {basePath:"/ExchangeRatesService"}
 service<http> ExchangeRatesService {
     endpoint<http:HttpClient> exchangeRatesEP {
