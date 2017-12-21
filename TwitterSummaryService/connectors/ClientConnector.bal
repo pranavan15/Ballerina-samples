@@ -168,6 +168,7 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
     action getTopTrendsByPlace(string locationId) (http:Response, http:HttpConnectorError) {
+        // Action Newly Added
         string urlParams;
         http:Request request = {};
         http:Response response = {};
@@ -184,8 +185,7 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
 
         return response, e;
     }
-    
-    // Newly Added
+
     @Description{ value : "Returns a collection of the most recent Tweets posted by the user."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
@@ -202,11 +202,11 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response, e;
     }
 
-    // Newly Added
     @Description{ value : "Returns a collection of user objects for users following the specified user."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
     action getUserFollowers() (http:Response, http:HttpConnectorError) {
+        // Action Newly Added
         http:Request request = {};
         http:Response response = {};
         map parameters = {};
@@ -219,11 +219,11 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response, e;
     }
 
-    // Newly Added
     @Description{ value : "Returns a collection of user objects for every user the specified user is following."}
     @Return{ value : "Response object."}
     @Return { value:"Error occured during HTTP client invocation." }
     action getUserFollowingFriends() (http:Response, http:HttpConnectorError) {
+        // Action Newly Added
         http:Request request = {};
         http:Response response = {};
         map parameters = {};
