@@ -1,4 +1,4 @@
-# Balleina Built-in Resilience
+# Ballerina Built-in Resilience
 Following guide demonstrates how to use built-in resiliency options available in Ballerina. 
 Ballerina runtime provides built-in utilities to handle the connector actions in a more resilient manner. Handling transient failures in Ballerina is easier than any other languages.
 
