@@ -165,6 +165,9 @@ service<http> ExchangeRatesService {
 ## Handling Transient Failures
 
 ### Retry
+
+Ballerina users can configure a retry mechanism for a given connector. Users can specify a retry count as well as retry duration and a set of error codes which should not be retried. If none of the error codes are specified, all the errors will be retried. If a dependent action is failed due to an error (application or network failure), users can configure a retry mechanism to invoke the same action again and again until a maximum count is reached or getting a successful result. 
+
 `ExchangeRatesWithRetry.bal` file shows how to use the retry resilience option available in Ballerina.
 
 ```ballerina
@@ -193,6 +196,8 @@ Above block determines the configurations we needed for the retry option. `count
 `interval: 100` specifies the retry delay.
 
 ### Timeout
+
+Ballerina users can configure a timeout value for a given connector. If that given timeout value is reached, the dependent action will fail and return an error to the caller.
 `ExchangeRatesWithTimeOut.bal` file shows how to use the timeout resilience option available in Ballerina.
 
 ```ballerina
