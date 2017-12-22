@@ -2,7 +2,7 @@
 
 ## Introduction 
 Following guide demonstrates how to use built-in resiliency options available in Ballerina. 
-Ballerina runtime provides built-in utilities to handle the connector actions in a more resilient manner. Handling transient failures in Ballerina is easier than any other languages.
+Ballerina runtime provides built-in utilities to handle the connector actions in a more resilient manner. Handling transient failures in Ballerina is easier than any other language.
 
 ## What You Will Devolop
 You'll build a service, which can be consumed by users to get the stock exchange rates. It basically calls the Foreign exchange rates and currency conversion API (http://fixer.io/) in the backend to get these information.
