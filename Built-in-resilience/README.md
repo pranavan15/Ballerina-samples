@@ -35,7 +35,7 @@ You will get a response in JSON format
     {"base":"USD","date":"2017-12-20","rates":{"AUD":1.3024,"BGN":1.6512,"BRL":3.2886,"CAD":1.285,"CHF":0.98793,"CNY":6.5788,"CZK":21.675,"DKK":6.2848,"GBP":0.74563,"HKD":7.8241,"HRK":6.3715,"HUF":264.04,"IDR":13578.0,"ILS":3.495,"INR":64.118,"JPY":113.26,"KRW":1082.0,"MXN":19.246,"MYR":4.074,"NOK":8.3312,"NZD":1.4327,"PHP":50.234,"PLN":3.5493,"RON":3.9075,"RUB":58.686,"SEK":8.3688,"SGD":1.3457,"THB":32.75,"TRY":3.83,"ZAR":12.673,"EUR":0.84424}}
 ```
 ## Before you begin:  What you'll need
-- About 15 minutes
+- About 30 minutes
 - A favorite text editor or IDE
 - JDK 1.8 or later
 - Ballerina Distribution (Install Instructions:  https://ballerinalang.org/docs/quick-tour/quick-tour/#install-ballerina)
@@ -109,6 +109,12 @@ $ballerina build ExchangeRatesWithTimeOut.bal
 $balleina run ExchangeRatesWithTimeOut.balx
 ```
 
+Console Output
+```
+ballerina: deploying service(s) in 'services'
+ballerina: started HTTP/WS server connector 0.0.0.0:9090
+```
+
 ## Running Service in Composer
 Start Composer https://ballerinalang.org/docs/quick-tour/quick-tour/#run-the-composer
 Navigate to File -> Open Program Directory, and pick the project folder (Ballerina-samples/Built-in-resilience).
@@ -119,7 +125,11 @@ Click on **Run**(Ctrl+Shift+R) button in the tool bar.
 
 
 ## Running in Intellij IDEA
-<TODO>
+Refer https://github.com/ballerinalang/plugin-intellij/tree/master/getting-started to setup your IntelliJ IDEA environment with Ballerina.
+Open Built-in-resilience project in IntelliJ IDEA and run `ExchangeRatesWithRetry.bal` or `ExchangeRatesWithTimeOut.bal`
+
+![alt text](https://github.com/lasinducharith/ballerina-rest-service/raw/master/images/helloService_IDEA.png)
+
 
 ## Running in VSCode
 <TODO>
