@@ -10,7 +10,7 @@ With the data streaming functionality, the result is streamed as a response to a
 This service allows a user to query and get lyrics for few children songs. Files are stored in the local directory and read as streams of bytes.
 These bytes are then processed and converted into json strings and sent as response to the clients.
 
-# How to deploy
+# How to Deploy
 1) Go to http://www.ballerinalang.org and click Download.
 2) Download the Ballerina Tools distribution and unzip it on your computer. Ballerina Tools includes the Ballerina runtime plus
 the visual editor (Composer) and other tools.
