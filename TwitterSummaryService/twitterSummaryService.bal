@@ -3,8 +3,8 @@ import ballerina.net.http;
 import connectors as conn;
 import util;
 
-const string  consumerKey = "MVwPICv1BF8aUS4HpmDGLuDoo";
-const string consumerSecret = "tabhZBl2MdUQOVuwK2v4976e4dmlq59kiHxEnKbTo3HYcFrLlP";
+const string  consumerKey = "2EJlE36flriywdeb9GdSIJTtr";
+const string consumerSecret = "iuMABjGWEf96aytD1uXfVoF5EYNdiOMs4oYWdjd3N9uVgXImjq";
 
 @http:configuration {basePath:"/twitterSummary"}
 service<http> twitterSummaryService {
