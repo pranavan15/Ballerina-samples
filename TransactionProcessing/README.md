@@ -10,7 +10,7 @@ ballerina language to handle SQL transactions easily.
 2) Download the Ballerina Tools distribution and unzip it on your computer. Ballerina Tools includes the Ballerina runtime plus
 the visual editor (Composer) and other tools.
 3) Add the <ballerina_home>/bin directory to your $PATH environment variable so that you can run the Ballerina commands from anywhere.
-4) After setting up <ballerina_home>, navigate to the folder containing `songLyricsService.bal` file and run: `$ ballerina run UserRegistration.bal` 
+4) After setting up <ballerina_home>, navigate to the folder containing `UserRegistration.bal` file and run: `$ ballerina run UserRegistration.bal` 
 
 # Response You Will Get
 
