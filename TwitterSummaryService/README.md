@@ -1,9 +1,9 @@
 # Twitter Summary Service
-This usecase example explains how to write a service whose integration and service logic are separated.
+This use-case example explains how to write a service whose integration and service logic are separated.
 
 This service consumes Twitter API by using Ballerina Twitter Connector. This is where the integration is handled. A connector allows you to interact mainly with third-party APIs. This enables you to connect and interact with APIs such as Twitter, Gmail, and Facebook easily. 
 
-Service logic is separately handled in `twitterSummaryService.bal` file. 
+Service logic is separately handled in `twitter-summary-service.bal` file.
 
 This implementation allows a user to do perform several twitter actions through TwitterSummaryService written using Ballerina language. 
 
@@ -22,13 +22,13 @@ When initiating these requests, user needs to send his Access Token, Access Toke
 2) Download the Ballerina Tools distribution and unzip it on your computer. Ballerina Tools includes the Ballerina runtime plus
 the visual editor (Composer) and other tools.
 3) Add the <ballerina_home>/bin directory to your $PATH environment variable so that you can run the Ballerina commands from anywhere.
-4) After setting up <ballerina_home>, navigate to the folder containing `twitterSummaryService.bal` file and run: `$ ballerina run twitterSummaryService.bal` 
+4) After setting up <ballerina_home>, navigate to the folder containing `twitter-summary-service.bal` file and run: `$ ballerina run twitter-summary-service.bal`
 
 5) How to interact with this web service, 
 * To get tweets with time                         - POST `localhost:9090/twitterSummary/getTweetsWithTime`
 * To get all your followers                       - POST `localhost:9090/twitterSummary/getFollowers`
 * To get all the people whom you are following    - POST `localhost:9090/twitterSummary/getFollowingFriends`
 
-6) Responses for above requst will be in application/json format
+6) Responses for above request will be in application/json format
 
 
