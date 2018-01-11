@@ -20,8 +20,7 @@ the visual editor (Composer) and other tools.
 * GET `localhost:9090/helloService/hello`
 6) Responses for above requst will be in application/json format
 7)To check the dynamic endpoint consumption, either you can send the above mentioned GET request multiple times or simple run: `$ ballerina run client.bal`
-* `client.bal` will initiate the GET request to the service again and again until an external interruption made. This will also log the 
-responses from the server 
+* `client.bal` will initiate the GET request to the service again and again until an external interruption made. This will also log the responses from the server 
 
 # Sample Response
 ```
