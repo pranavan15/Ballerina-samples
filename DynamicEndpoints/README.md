@@ -22,3 +22,18 @@ the visual editor (Composer) and other tools.
 7)To check the dynamic endpoint consumption, either you can send the above mentioned GET request multiple times or simple run: `$ ballerina run client.bal`
 * `client.bal` will initiate the GET request to the service again and again until an external interruption made. This will also log the 
 responses from the server 
+
+# Sample Response
+```
+2018-01-11 18:08:42,251 INFO  [] - {"Msg":"Hello from Backend 5"} 
+2018-01-11 18:08:43,459 INFO  [] - {"Msg":"Hello from Backend 2"} 
+2018-01-11 18:08:44,761 INFO  [] - {"Msg":"Hello from Backend 3"} 
+2018-01-11 18:08:46,097 INFO  [] - {"Msg":"Hello from Backend 1"} 
+2018-01-11 18:08:47,583 INFO  [] - {"Msg":"Hello from Backend 5"} 
+2018-01-11 18:08:49,568 INFO  [] - {"Msg":"Hello from Backend 3"} 
+2018-01-11 18:08:50,818 INFO  [] - {"Msg":"Hello from Backend 2"} 
+2018-01-11 18:08:52,147 INFO  [] - {"Msg":"Hello from Backend 2"} 
+2018-01-11 18:08:53,492 INFO  [] - {"Msg":"Hello from Backend 1"} 
+2018-01-11 18:08:54,850 INFO  [] - {"Msg":"Hello from Backend 1"} 
+2018-01-11 18:08:56,564 INFO  [] - {"Msg":"Hello from Backend 4"}
+```
