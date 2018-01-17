@@ -1,4 +1,4 @@
-package SOAP_Endpoint_to_JSON.util;
+package SOAPEndpointToJSON.util;
 
 import ballerina.net.soap;
 
