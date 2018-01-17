@@ -1,5 +1,3 @@
-package fileStream;
-
 import ballerina.net.http;
 import ballerina.file;
 import ballerina.io;

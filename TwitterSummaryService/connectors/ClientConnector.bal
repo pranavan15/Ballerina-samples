@@ -1,5 +1,4 @@
-
-package connectors;
+package TwitterSummaryService.connectors;
 
 import ballerina.util.arrays;
 import ballerina.net.http;

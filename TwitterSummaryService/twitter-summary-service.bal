@@ -1,7 +1,6 @@
-
 import ballerina.net.http;
-import connectors as conn;
-import util;
+import TwitterSummaryService.connectors as conn;
+import TwitterSummaryService.util;
 
 service<http> twitterSummary {
     endpoint<conn:ClientConnector> twitterConnectorEP {

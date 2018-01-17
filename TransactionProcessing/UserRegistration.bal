@@ -1,5 +1,3 @@
-package transactions;
-
 import ballerina.data.sql;
 import ballerina.log;
 

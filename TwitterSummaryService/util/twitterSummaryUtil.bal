@@ -1,7 +1,6 @@
-
-package util;
+package TwitterSummaryService.util;
 import ballerina.net.http;
-import connectors as conn;
+import TwitterSummaryService.connectors as conn;
 
 const string consumerKey = "2EJlE36flriywdeb9GdSIJTtr";
 const string consumerSecret = "iuMABjGWEf96aytD1uXfVoF5EYNdiOMs4oYWdjd3N9uVgXImjq";

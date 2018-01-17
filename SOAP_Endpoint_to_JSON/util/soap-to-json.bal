@@ -1,4 +1,4 @@
-package util;
+package SOAP_Endpoint_to_JSON.util;
 
 import ballerina.net.soap;
 
@@ -20,7 +20,7 @@ public function soapToJson (string soapHost, string soapReqPath, xml soapReqBody
     soapResponse, soapError = soapClient.sendReceive(soapReqPath, soapRequest);
 
     xml payload = soapResponse.payload;
-    payload, _ = <xml>payload.getTextValue().replace("&lt;", "<");
+    payload, _ = <xml>payload.getTextValue();
     xmlOptions options = {preserveNamespaces:false};
     json jsonPayload = payload.toJSON(options);
     return jsonPayload;
