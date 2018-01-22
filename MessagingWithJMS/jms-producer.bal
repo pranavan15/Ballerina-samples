@@ -18,7 +18,7 @@ service<http> cabBookingService {
 
         // Continuously check the vehicle availability with a random delay
         while (true) {
-            int delay = math:randomInRange(10, 20) * 1000;
+            int delay = math:randomInRange(5, 15) * 1000;
             sleep(delay);
             boolean isAvailable = checkAvailability(source, destination, vehicleType);
             if (isAvailable) {
