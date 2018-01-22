@@ -1,5 +1,5 @@
 import ballerina.net.http;
-                     import SOAPEndpointToJSON.util;
+import SOAPEndpointToJSON.util;
 
 const string soapHost = "http://webservicex.net";
 const string soapReqPath = "/globalweather.asmx";
