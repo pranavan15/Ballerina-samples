@@ -18,7 +18,7 @@ service<http> getCitiesByCountry {
         soapReqBody, _ = <xml>("<GetCitiesByCountry xmlns=\"http://www.webserviceX.NET\"><CountryName>" +
                                country + "</CountryName></GetCitiesByCountry>");
         // Make SOAP request call
-        json resPayload = util:soapToJson(soapHost, soapReqPath, soapReqBody, soapReqAction);
+        json resPayload = util:soapToJson(soapHost, soapReqPath, soapReqAction, soapReqBody);
         // Send the JSON response to the user
         response.setJsonPayload(resPayload);
         _ = response.send();
