@@ -9,7 +9,7 @@ request from the backend, it again converts it as JSON response and sends back t
 a JSON endpoint.
 
 Below diagram explains this process.
-
+![alt text](https://github.com/pranavan15/Ballerina-samples/blob/master/SOAPEndpointToJSON/images/soapToJson.png)
  
 `http://webservicex.net` is used as the SOAP host. The following is a sample SOAP 1.1 request and response to/from the 
 SOAP host.
