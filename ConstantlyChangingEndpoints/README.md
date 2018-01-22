@@ -5,12 +5,11 @@ changing endpoint. As Ballerina has built-in supports to handle HTTP Connections
 to endpoint direct binding options, it's very easy for a user to write a service that is required to communicate with
 a constantly changing endpoint. 
 
-In this example, file `hello-service-that-consumes-constantly-changing-endpoint.bal` initiates a service that 
-consumes a constantly changing endpoint each time.  File util:`get-random-endpoint.bal` randomly select an endpoint 
-from a map that consists of 5 different backend URIs. 5 mock endpoints created for this purpose using `postman` 
-application. 
-Service calls a randomly selected endpoint and forward the response to the client. File `hello-service-client
-.bal` contains the implementation of a client, which calls the hello service continuously.
+In this example, file `constantly-changing-endpoint.bal` initiates a service that consumes a constantly changing 
+endpoint each time.  File util:`get-random-endpoint.bal` randomly select an endpoint from a map that consists of 5 
+different backend URIs. 5 mock endpoints created for this purpose using `postman` application. 
+Service calls a randomly selected endpoint and forward the response to the client. File `hello-service-client.bal` 
+contains the implementation of a client, which calls the hello service continuously.
 
 ## How to Run
 1) Go to https://ballerinalang.org and click Download.
@@ -19,7 +18,7 @@ runtime plus the visual editor (Composer) and other tools.
 3) Add the `<BALLERINA_HOME>/bin` directory to your $PATH environment variable so that you can run the Ballerina 
 commands from anywhere.
 4) After setting up <BALLERINA_HOME>, navigate to the `ConstantlyChangingEndpoints` folder and run:
- `$ ballerina run hello-service-that-consumes-constantly-changing-endpoint.bal` to run the hello service.
+ `$ ballerina run constantly-changing-endpoint.bal` to run the hello service.
 5) To run the hello service client, run: `$ ballerina run hello-service-client.bal` 
 
 #### How to interact with this web service

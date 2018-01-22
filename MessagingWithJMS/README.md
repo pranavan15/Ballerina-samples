@@ -33,7 +33,7 @@ Broker client)
 
 Example payload: `{Source:"Colombo", Destination: "Kandy", Vehicle: "Car", PhoneNumber: "0777123123"}`
 
-Response for the above request will be in Application/Json format
+Response for the above request will be in Application/Json format.
 
 To check the above service, either you can send the above mentioned POST request or simply run the 
 cab booking service client, which will initiate the POST request to the service and log the response from the server .
@@ -45,5 +45,4 @@ cab booking service client, which will initiate the POST request to the service 
 [jms-consumer.bal] 2018-01-22 10:52:34,981 INFO  [] - Message received from jms-producer 
 [jms-consumer.bal] 2018-01-22 10:52:34,984 INFO  [] - Successfully sent SMS to: 0777123123 
 [jms-consumer.bal] 2018-01-22 10:52:34,985 INFO  [] - SMS Content: Hello user! Vehicle available for your journey
-
 ```
