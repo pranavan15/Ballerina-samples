@@ -12,8 +12,8 @@ public function main (string[] args) {
     // Request body
     json requestBody = {Source:"Colombo", Destination: "Kandy", Vehicle: "Car", PhoneNumber: "0777123123"};
     request.setJsonPayload(requestBody);
-    // Initiate a get request
-    response, _ = httpEndpoint.get("/cabBookingService/placeOrder", request);
+    // Initiate a POST request
+    response, _ = httpEndpoint.post("/cabBookingService/placeOrder", request);
     // Get the JSON response
     json jsonResponse = response.getJsonPayload();
     log:printInfo(jsonResponse.toString());
