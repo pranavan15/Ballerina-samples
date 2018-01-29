@@ -1,3 +1,5 @@
+package MessagingWithJMS;
+
 import ballerina.net.jms;
 import ballerina.log;
 

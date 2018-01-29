@@ -1,3 +1,5 @@
+package SOAPEndpointToJSON;
+
 import ballerina.net.http;
 import SOAPEndpointToJSON.util;
 
@@ -9,7 +11,7 @@ xml soapReqBody;
 // Service to get cities by country name
 // This service calls a SOAP/XML backend to get the cities for a specified country
 // The users only see a JSON endpoint - Users send a JSON request to our service and get a JSON response
-service<http> getCitiesByCountry {
+service<http> citiesByCountryService {
     resource getCities (http:Request request, http:Response response) {
         // Get the JSON payload from the user request
         json reqPayload = request.getJsonPayload();

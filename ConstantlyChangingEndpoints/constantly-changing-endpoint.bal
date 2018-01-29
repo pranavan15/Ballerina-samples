@@ -1,3 +1,5 @@
+package ConstantlyChangingEndpoints;
+
 import ballerina.net.http;
 import ConstantlyChangingEndpoints.util;
 

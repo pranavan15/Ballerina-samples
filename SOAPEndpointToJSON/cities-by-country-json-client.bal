@@ -1,3 +1,5 @@
+package SOAPEndpointToJSON;
+
 import ballerina.net.http;
 import ballerina.log;
 
@@ -10,10 +12,10 @@ public function main (string[] args) {
     http:Request request = {};
     http:Response response = {};
     // Request body
-    json requestBody = {Country:"Sri Lanka"};
+    json requestBody = {"Country":"Sri Lanka"};
     request.setJsonPayload(requestBody);
     // Initiate a POST request
-    response, _ = httpEndpoint.post("/getCitiesByCountry/getCities", request);
+    response, _ = httpEndpoint.post("/citiesByCountryService/getCities", request);
     // Get the JSON response
     json jsonResponse = response.getJsonPayload();
     log:printInfo(jsonResponse.toString());

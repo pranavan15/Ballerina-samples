@@ -1,8 +1,10 @@
+package FileStreamProcessing;
+
 import ballerina.net.http;
 import ballerina.file;
 import ballerina.io;
 
-file:File directory = {path:"/home/pranavan/IdeaProjects/StreamProcessing/fileStream/util"};
+file:File directory = {path:"/home/pranavan/IdeaProjects/Ballerina-samples/FileStreamProcessing/fileStream/util"};
 
 @http:configuration {basePath:"/lyricsService"}
 service<http> lyricsService {
@@ -29,25 +31,25 @@ service<http> lyricsService {
     }
 }
 
-function getFileNames()(json[] fileNames) {
+function getFileNames () (json[]) {
     var filesList, _, _ = directory.list();
     int i = 0;
     json[] files = [];
     while (i < lengthof filesList) {
         var filePath, _ = <json>filesList[i];
         string file = filePath.toString();
-        file = file.replace("{\"path\":\"/home/pranavan/IdeaProjects/StreamProcessing/fileStream/util/", "");
+        file = file.replace("{\"path\":\"/home/pranavan/IdeaProjects/Ballerina-samples/FileStreamProcessing/fileStream/util/", "");
         file = file.replace(".txt\"}", "");
         files[i] = file;
         i = i + 1;
     }
-    return  files;
+    return files;
 }
 
-function getLyrics(string songName)(blob lyrics) {
-    string filePath = "/home/pranavan/IdeaProjects/StreamProcessing/fileStream/util/" + songName + ".txt";
+function getLyrics (string songName) (blob) {
+    string filePath = "/home/pranavan/IdeaProjects/Ballerina-samples/FileStreamProcessing/fileStream/util/" + songName + ".txt";
     io:ByteChannel channel = getFileChannel(filePath, "r");
-    var readContent, numOfBytesRead = readBytes(channel);
+    var readContent, _ = readBytes(channel);
     return readContent;
 }
 
@@ -60,6 +62,6 @@ function getFileChannel (string filePath, string permission) (io:ByteChannel) {
 function readBytes (io:ByteChannel channel) (blob, int) {
     blob readContent;
     int numberOfBytesRead;
-    readContent,numberOfBytesRead = channel.readAllBytes();
+    readContent, numberOfBytesRead = channel.readAllBytes();
     return readContent, numberOfBytesRead;
 }

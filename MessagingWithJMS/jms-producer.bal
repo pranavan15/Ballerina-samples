@@ -1,3 +1,5 @@
+package MessagingWithJMS;
+
 import ballerina.net.jms;
 import ballerina.math;
 import ballerina.net.http;
@@ -12,7 +14,7 @@ service<http> cabBookingService {
         string vehicleType = reqPayload["Vehicle"].toString();
         string phoneNumber = reqPayload["PhoneNumber"].toString();
         // Send response to the user
-        json responseMessage = {message:"Order successful. You will get an SMS when a vehicle is available"};
+        json responseMessage = {"Message":"Order successful. You will get an SMS when a vehicle is available"};
         response.setJsonPayload(responseMessage);
         _ = response.send();
 

@@ -1,3 +1,5 @@
+package MessagingWithJMS;
+
 import ballerina.net.http;
 import ballerina.log;
 
@@ -9,8 +11,8 @@ public function main (string[] args) {
 
     http:Request request = {};
     http:Response response = {};
-    // Request body
-    json requestBody = {Source:"Colombo", Destination: "Kandy", Vehicle: "Car", PhoneNumber: "0777123123"};
+    // Set request body
+    json requestBody = {"Source":"Colombo", "Destination":"Kandy", "Vehicle":"Car", "PhoneNumber":"0777123123"};
     request.setJsonPayload(requestBody);
     // Initiate a POST request
     response, _ = httpEndpoint.post("/cabBookingService/placeOrder", request);

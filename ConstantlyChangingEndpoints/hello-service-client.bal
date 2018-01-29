@@ -1,6 +1,9 @@
+package ConstantlyChangingEndpoints;
+
 import ballerina.net.http;
 import ballerina.log;
 
+// Hello-service-client to test the constantly-changing-endpoint service
 public function main (string[] args) {
     http:HttpClient httpClient = create http:HttpClient("http://localhost:9090", {});
     // Call the service endlessly
