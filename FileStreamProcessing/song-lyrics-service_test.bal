@@ -2,6 +2,7 @@ package FileStreamProcessing;
 
 import ballerina.test;
 import ballerina.net.http;
+import ballerina.io;
 
 // Unit test for song-lyrics-service
 
@@ -50,4 +51,17 @@ function testGetLyrics () {
     test:assertTrue(lyrics.contains("I’M A LITTLE TEAPOT"), "Cannot read lyrics from the file correctly!");
 }
 
-//function testGetFileChannel
+function testGetFileChannel () {
+    string filePath = "/home/pranavan/IdeaProjects/Ballerina-samples/FileStreamProcessing/fileStream/util/"
+                      + "Teapot" + ".txt";
+    io:ByteChannel channel = getFileChannel(filePath, "r");
+    test:assertTrue(channel != null, "Cannot get FileChannel");
+}
+
+function testReadBytes () {
+    string filePath = "/home/pranavan/IdeaProjects/Ballerina-samples/FileStreamProcessing/fileStream/util/" +
+                      "Teapot" + ".txt";
+    io:ByteChannel channel = getFileChannel(filePath, "r");
+    var _, numberOfBytesRead = readBytes(channel);
+    test:assertTrue(numberOfBytesRead == 484, "File content not read properly!");
+}

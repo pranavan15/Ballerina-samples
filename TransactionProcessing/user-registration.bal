@@ -11,15 +11,19 @@ struct user {
 
 // DB configurations
 const string DB_HOST = "localhost";
-const string DB_NAME = "userDB?useSSL=false";
+const string DB_NAME = "userDB";
 const string DB_USER_NAME = "root";
 const string DB_PASSWORD = "Mathematics";
 const int DB_PORT = 3306;
 const int DB_MAX_POOL_SIZE = 5;
 
+// Construct connection URL
+string connectionUrl = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?useSSL=false";
+
 // Create SQL connector
-sql:ClientConnector sqlConnector = create sql:ClientConnector(sql:DB.MYSQL, DB_HOST, DB_PORT, DB_NAME, DB_USER_NAME,
-                                                              DB_PASSWORD, {maximumPoolSize:DB_MAX_POOL_SIZE});
+sql:ClientConnector sqlConnector = create sql:ClientConnector(sql:DB.GENERIC, "", 0, "", DB_USER_NAME, DB_PASSWORD,
+                                                              {url:connectionUrl,
+                                                                  maximumPoolSize:DB_MAX_POOL_SIZE});
 
 function main (string[] args) {
     endpoint<sql:ClientConnector> userDB {
@@ -57,15 +61,33 @@ function main (string[] args) {
         } failed {
             // Expected Results
             log:printError("Transaction failed");
-            println(getUsers());
         }
     } catch (error e) {
-        log:printInfo("Above error occurred as expected: username 'Alice' is already taken");
+        log:printInfo("Above error occured as expected: username 'Alice' is already taken");
     }
     log:printInfo("Registered users: " + getUsers() + "\n" +
                   "Expected Results: You shouldn't see 'charles'. " +
                   "Attempt to reuse username 'Alice' is a DB constraint violation. " +
                   "Therefore, Charles was rolled back in the same TX\n");
+
+    // Transaction 3 - Expected to fail
+    user user5 = {name:"Dias", password:"Dias123", age:24, country:"Sri Lanka"};
+    user user6 = {name:"UserWhoLovesCats", password:"ABC123", age:27, country:"India"};
+    user[] usersArray3 = [user5, user6];
+    try {
+        transaction with retries(0) {
+            addUsers(usersArray3);
+            log:printInfo("Transaction committed");
+        } failed {
+            // Expected Results
+            log:printError("Transaction failed");
+        }
+    } catch (error e) {
+        log:printInfo("Above error occured as expected: username is too big (Atmost 10 characters)");
+    }
+    log:printInfo("Registered users: " + getUsers() + "\n" +
+                  "Expected Results: You shouldn't see 'Dias' and 'UserWhoLovesCats'. " +
+                  "'UserWhoLovesCats' violated DB constraints, and 'Dias' was rolled back in the same TX\n");
 
     userDB.close();
 }
@@ -84,6 +106,7 @@ function addUsers (user[] users) {
         sql:Parameter parameter3 = {sqlType:sql:Type.INTEGER, value:users[i].age};
         sql:Parameter parameter4 = {sqlType:sql:Type.VARCHAR, value:users[i].country};
         sql:Parameter[] parameters = [parameter1, parameter2, parameter3, parameter4];
+        // Insert query
         _ = userDB.update("INSERT INTO USERINFO VALUES (?, ?, ?, ?)", parameters);
         i = i + 1;
     }
@@ -94,6 +117,7 @@ function getUsers () (string registeredUsers) {
     endpoint<sql:ClientConnector> userDB {
         sqlConnector;
     }
+    // Select query
     datatable dt = userDB.select("SELECT USERNAME FROM USERINFO", null, null);
     // Convert datatable to JSON
     var dtJson, _ = <json>dt;
