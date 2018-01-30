@@ -1,7 +1,7 @@
-package MessagingWithJMS;
+//package MessagingWithJMS;
 
-import ballerina.net.jms;
 import ballerina.log;
+import ballerina.net.jms;
 
 @Description {value:"Service level annotation to provide connection details.
                       Connection factory type can be either queue or topic depending on the requirement. "}

@@ -3,7 +3,7 @@
 This web service, which is written in Ballerina language demonstrates how to write a service that consumes a constantly 
 changing endpoint. As Ballerina has built-in supports to handle HTTP Connections, Endpoint definitions and connector 
 to endpoint direct binding options, it's very easy for a user to write a service that is required to communicate with
-a constantly changing endpoint. 
+a constantly changing backend. 
 
 In this example, file `constantly-changing-endpoint.bal` initiates a service that consumes a constantly changing 
 endpoint each time.  File util:`get-random-endpoint.bal` randomly select an endpoint from a map that consists of 5 

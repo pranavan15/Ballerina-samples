@@ -1,7 +1,7 @@
-package MessagingWithJMS;
+//package MessagingWithJMS;
 
-import ballerina.net.http;
 import ballerina.log;
+import ballerina.net.http;
 
 // Client to consume Cab booking service
 public function main (string[] args) {

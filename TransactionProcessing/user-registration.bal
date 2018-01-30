@@ -38,6 +38,7 @@ function main (string[] args) {
                                 AGE INT, COUNTRY VARCHAR(255), PRIMARY KEY (USERNAME))", null);
 
     // Transaction 1 - Expected to be successful
+    log:printInfo("---------------------------------- Transaction 1 ----------------------------------");
     user user1 = {name:"Alice", password:"Alice123", age:20, country:"USA"};
     user user2 = {name:"Bob", password:"bob123", age:21, country:"UK"};
     user[] usersArray1 = [user1, user2];
@@ -53,6 +54,7 @@ function main (string[] args) {
     log:printInfo("Expected Results: You should see 'Alice' and 'Bob'\n");
 
     // Transaction 2 - Expected to fail
+    log:printInfo("---------------------------------- Transaction 2 ----------------------------------");
     user user3 = {name:"Charles", password:"Charles123", age:25, country:"India"};
     user user4 = {name:"Alice", password:"AliceNew123", age:32, country:"Sri Lanka"};
     user[] usersArray2 = [user3, user4];
@@ -73,6 +75,7 @@ function main (string[] args) {
                   "Therefore, Charles was rolled back in the same TX\n");
 
     // Transaction 3 - Expected to fail
+    log:printInfo("---------------------------------- Transaction 3 ----------------------------------");
     user user5 = {name:"Dias", password:"Dias123", age:24, country:"Sri Lanka"};
     user user6 = {name:"UserWhoLovesCats", password:"ABC123", age:27, country:"India"};
     user[] usersArray3 = [user5, user6];

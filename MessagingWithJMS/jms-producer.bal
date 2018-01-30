@@ -1,9 +1,9 @@
-package MessagingWithJMS;
+//package MessagingWithJMS;
 
-import ballerina.net.jms;
+import ballerina.log;
 import ballerina.math;
 import ballerina.net.http;
-import ballerina.log;
+import ballerina.net.jms;
 
 service<http> cabBookingService {
     resource placeOrder (http:Request request, http:Response response) {
@@ -20,7 +20,7 @@ service<http> cabBookingService {
 
         // Continuously check the vehicle availability with a random delay
         while (true) {
-            int delay = math:randomInRange(5, 15) * 1000;
+            int delay = math:randomInRange(5, 10) * 1000;
             sleep(delay);
             boolean isAvailable = checkAvailability(source, destination, vehicleType);
             if (isAvailable) {
@@ -57,7 +57,8 @@ function getConnectorConfig () (jms:ClientProperties) {
     // 'initialContextFactory' vary according to the JMS provider you use
     // In this example WSO2 MB server has been used as the message broker
     jms:ClientProperties properties = {initialContextFactory:"wso2mbInitialContextFactory",
-                                          configFilePath:"/home/pranavan/IdeaProjects/Ballerina-samples/MessagingWithJMS/resources/jndi.properties",
+                                          configFilePath:"/home/pranavan/IdeaProjects/Ballerina-samples/" +
+                                                         "MessagingWithJMS/resources/jndi.properties",
                                           connectionFactoryName:"QueueConnectionFactory",
                                           connectionFactoryType:"queue"};
     return properties;
