@@ -1,9 +1,9 @@
 package ConstantlyChangingEndpoints.util;
 
-import ballerina.net.http;
 import ballerina.math;
+import ballerina.net.http;
 
-// Map with some mock endpoints
+// Map containing some mock endpoints
 map endpointsMap = {
                        ep1:"https://be053e7c-4d6a-4314-928e-55223350cee3.mock.pstmn.io",
                        ep2:"https://80860706-e456-4ed2-8347-1ac9cf265174.mock.pstmn.io",
@@ -15,8 +15,8 @@ map endpointsMap = {
 // Selects an endpoint randomly from the map and connects with it
 public function getRandomHttpClient () (http:HttpClient) {
     int randomNumber = math:randomInRange(1, 6);
-    string endpointsMapKey = "ep" + randomNumber;
-    var endpointURI, _ = (string)endpointsMap[endpointsMapKey];
-    http:HttpClient httpClient = create http:HttpClient(endpointURI, {});
-    return httpClient;
+    string randomEndpointKey = "ep" + randomNumber;
+    // Map only contains hardcoded string values; hence, ignoring the TypeCastError
+    var randomEndpointURI, _ = (string)endpointsMap[randomEndpointKey];
+    return (create http:HttpClient(randomEndpointURI, {}));
 }
