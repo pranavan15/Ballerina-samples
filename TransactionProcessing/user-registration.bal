@@ -43,7 +43,10 @@ function main (string[] args) {
     user user2 = {name:"Bob", password:"bob123", age:21, country:"UK"};
     user[] usersArray1 = [user1, user2];
     transaction with retries(0) {
-        addUsers(usersArray1);
+        int updatedRows = addUsers(usersArray1);
+        if (updatedRows == 0) {
+            abort;
+        }
         // Expected Results
         log:printInfo("'Alice' and 'Bob' have succesfully registered");
         log:printInfo("Transaction committed");
@@ -60,7 +63,10 @@ function main (string[] args) {
     user[] usersArray2 = [user3, user4];
     try {
         transaction with retries(0) {
-            addUsers(usersArray2);
+            int updatedRows = addUsers(usersArray2);
+            if (updatedRows == 0) {
+                abort;
+            }
             log:printInfo("Transaction committed");
         } failed {
             // Expected Results
@@ -81,7 +87,10 @@ function main (string[] args) {
     user[] usersArray3 = [user5, user6];
     try {
         transaction with retries(0) {
-            addUsers(usersArray3);
+            int updatedRows = addUsers(usersArray3);
+            if (updatedRows == 0) {
+                abort;
+            }
             log:printInfo("Transaction committed");
         } failed {
             // Expected Results
@@ -98,13 +107,13 @@ function main (string[] args) {
 }
 
 // Function to add users to USERINFO table of userDB database
-function addUsers (user[] users) {
+function addUsers (user[] users) (int) {
     endpoint<sql:ClientConnector> userDB {
         sqlConnector;
     }
     int numOfUsers = lengthof users;
     int i;
-
+    int updatedRows;
     while (i < numOfUsers) {
         sql:Parameter parameter1 = {sqlType:sql:Type.VARCHAR, value:users[i].name};
         sql:Parameter parameter2 = {sqlType:sql:Type.VARCHAR, value:users[i].password};
@@ -112,9 +121,13 @@ function addUsers (user[] users) {
         sql:Parameter parameter4 = {sqlType:sql:Type.VARCHAR, value:users[i].country};
         sql:Parameter[] parameters = [parameter1, parameter2, parameter3, parameter4];
         // Insert query
-        _ = userDB.update("INSERT INTO USERINFO VALUES (?, ?, ?, ?)", parameters);
+        updatedRows = userDB.update("INSERT INTO USERINFO VALUES (?, ?, ?, ?)", parameters);
+        if (updatedRows == 0) {
+            break;
+        }
         i = i + 1;
     }
+    return updatedRows;
 }
 
 // Function to get the registered users from the USERINFO table
@@ -125,6 +138,7 @@ function getUsers () (string registeredUsers) {
     // Select query
     datatable dt = userDB.select("SELECT USERNAME FROM USERINFO", null, null);
     // Convert datatable to JSON
+    // dt to json is not expected to fail in this scenario; hence ignoring the TypeCastError
     var dtJson, _ = <json>dt;
     registeredUsers = dtJson.toString();
     return;
