@@ -23,6 +23,9 @@ public function callSoapEndpoint (string soapHost, string soapReqPath, string so
 
     // Send the SOAP request and wait for the response
     soapResponse, soapError = soapClient.sendReceive(soapReqPath, soapRequest);
+    if (soapError != null) {
+        throw soapError;
+    }
     // Get the XML response payload
     xml responsePayload = soapResponse.payload;
     return responsePayload;
@@ -30,7 +33,11 @@ public function callSoapEndpoint (string soapHost, string soapReqPath, string so
 
 public function xmlToJson (xml payload) (json) {
     // To handle CDATA in XML
-    payload, _ = <xml>payload.getTextValue();
+    TypeConversionError conversionErr;
+    payload, conversionErr = <xml>payload.getTextValue();
+    if (conversionErr != null) {
+        throw conversionErr;
+    }
     // Xml options when converting xml to json
     xmlOptions options = {preserveNamespaces:false};
     // Convert the XML payload to JSON payload
