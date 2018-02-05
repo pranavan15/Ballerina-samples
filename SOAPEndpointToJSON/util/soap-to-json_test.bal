@@ -11,8 +11,9 @@ const string soapReqBody = "<GetCitiesByCountry xmlns=\"http://www.webserviceX.N
 function testSoapToJson () {
     var xmlReqBody, _ = <xml>soapReqBody;
     // Make SOAP request call
-    json resPayload = soapToJson(soapHost, soapReqPath, soapReqAction, xmlReqBody);
-    string stringPayload = resPayload.toString();
+    xml resPayload = callSoapEndpoint(soapHost, soapReqPath, soapReqAction, xmlReqBody);
+    json jsonResPayload = xmlToJson(resPayload);
+    string stringPayload = jsonResPayload.toString();
     test:assertTrue((stringPayload != null) && stringPayload.contains("{\"Country\":\"Sri Lanka\","
                                                                       + "\"City\":\"Anuradhapura\"}"),
                     "Output mismatch!");

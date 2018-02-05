@@ -1,7 +1,7 @@
 package SOAPEndpointToJSON;
 
-import ballerina.net.http;
 import SOAPEndpointToJSON.util;
+import ballerina.net.http;
 
 const string soapHost = "http://webservicex.net";
 const string soapReqPath = "/globalweather.asmx";
@@ -20,9 +20,10 @@ service<http> citiesByCountryService {
         soapReqBody, _ = <xml>("<GetCitiesByCountry xmlns=\"http://www.webserviceX.NET\"><CountryName>" +
                                country + "</CountryName></GetCitiesByCountry>");
         // Make SOAP request call
-        json resPayload = util:soapToJson(soapHost, soapReqPath, soapReqAction, soapReqBody);
+        xml resPayload = util:callSoapEndpoint(soapHost, soapReqPath, soapReqAction, soapReqBody);
+        json jsonResPayload = util:xmlToJson(resPayload);
         // Send the JSON response to the user
-        response.setJsonPayload(resPayload);
+        response.setJsonPayload(jsonResPayload);
         _ = response.send();
     }
 }
