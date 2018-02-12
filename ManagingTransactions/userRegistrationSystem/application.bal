@@ -47,7 +47,7 @@ function main (string[] args) {
             // Expected Results
             log:printError("Transaction failed");
         }
-    } catch (error e) {
+    } catch (error err) {
         log:printInfo("Above error occured as expected: username 'Alice' is already taken");
     }
     var registeredUsers2, conversionError2 = getAllRegisteredUsers();
@@ -77,7 +77,7 @@ function main (string[] args) {
             // Expected Results
             log:printError("Transaction failed");
         }
-    } catch (error e) {
+    } catch (error err) {
         log:printInfo("Above error occured as expected: username 'UserWhoLovesCats' is too big (Atmost 10 characters)");
     }
     var registeredUsers3, conversionError3 = getAllRegisteredUsers();
