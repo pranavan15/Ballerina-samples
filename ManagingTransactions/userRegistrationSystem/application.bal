@@ -10,9 +10,9 @@ function main (string[] args) {
     user[] usersArray1 = [user1, user2];
     transaction with retries(0) {
         log:printInfo("Registering 'Alice' and 'Bob'");
-        int updatedRows = registerUsers(usersArray1);
-        // If no user is added, abort the transaction
-        if (updatedRows == 0) {
+        int updateStatus = registerUsers(usersArray1);
+        // If update fails, abort the transaction
+        if (updateStatus == 0) {
             abort;
         }
         // Expected Results
@@ -37,9 +37,9 @@ function main (string[] args) {
     try {
         transaction with retries(0) {
             log:printInfo("Registering 'Alice' and 'Charles'");
-            int updatedRows = registerUsers(usersArray2);
-            // If no user is added, abort the transaction
-            if (updatedRows == 0) {
+            int updateStatus = registerUsers(usersArray2);
+            // If update fails, abort the transaction
+            if (updateStatus == 0) {
                 abort;
             }
             log:printInfo("Transaction committed");
@@ -48,7 +48,7 @@ function main (string[] args) {
             log:printError("Transaction failed");
         }
     } catch (error err) {
-        log:printInfo("Above error occured as expected: username 'Alice' is already taken");
+        log:printInfo("Above error occurred as expected: username 'Alice' is already taken");
     }
     var registeredUsers2, conversionError2 = getAllRegisteredUsers();
     if (conversionError2 != null) {
@@ -67,9 +67,9 @@ function main (string[] args) {
     try {
         transaction with retries(0) {
             log:printInfo("Registering 'Dias' and 'UserWhoLovesCats'");
-            int updatedRows = registerUsers(usersArray3);
-            // If no user is added, abort the transaction
-            if (updatedRows == 0) {
+            int updateStatus = registerUsers(usersArray3);
+            // If update fails, abort the transaction
+            if (updateStatus == 0) {
                 abort;
             }
             log:printInfo("Transaction committed");
@@ -78,7 +78,7 @@ function main (string[] args) {
             log:printError("Transaction failed");
         }
     } catch (error err) {
-        log:printInfo("Above error occured as expected: username 'UserWhoLovesCats' is too big (Atmost 10 characters)");
+        log:printInfo("Above error occurred as expected: username 'UserWhoLovesCats' is too big (Atmost 10 characters)");
     }
     var registeredUsers3, conversionError3 = getAllRegisteredUsers();
     if (conversionError3 != null) {

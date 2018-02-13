@@ -1,6 +1,5 @@
 package userRegistrationSystem;
 
-import ballerina.config;
 import ballerina.data.sql;
 import ballerina.log;
 import userRegistrationSystem.dbUtil;
@@ -27,7 +26,7 @@ public function registerUsers (user[] users) (int) {
     }
     int numOfUsers = lengthof users;
     int i;
-    int updatedRows;
+    int updateStatus;
     while (i < numOfUsers) {
         sql:Parameter parameter1 = {sqlType:sql:Type.VARCHAR, value:users[i].username};
         sql:Parameter parameter2 = {sqlType:sql:Type.VARCHAR, value:users[i].password};
@@ -35,14 +34,14 @@ public function registerUsers (user[] users) (int) {
         sql:Parameter parameter4 = {sqlType:sql:Type.VARCHAR, value:users[i].country};
         sql:Parameter[] parameters = [parameter1, parameter2, parameter3, parameter4];
         // Insert query
-        updatedRows = userDB.update("INSERT INTO USERINFO VALUES (?, ?, ?, ?)", parameters);
+        updateStatus = userDB.update("INSERT INTO USERINFO VALUES (?, ?, ?, ?)", parameters);
         // If no rows updated break and return
-        if (updatedRows == 0) {
+        if (updateStatus == 0) {
             break;
         }
         i = i + 1;
     }
-    return updatedRows;
+    return updateStatus;
 }
 
 // Function to get the registered users from the 'USERINFO' table
@@ -51,7 +50,7 @@ public function getAllRegisteredUsers () (string, TypeConversionError) {
         sqlConnector;
     }
     // Select query
-    datatable dt = userDB.select("SELECT USERNAME FROM USERINFO", null, null);
+    table dt = userDB.select("SELECT USERNAME FROM USERINFO", null, null);
     // Convert datatable to JSON
     var dtJson, conversionError = <json>dt;
     return dtJson.toString(), conversionError;
@@ -61,7 +60,11 @@ function initializeDB () (boolean) {
     endpoint<sql:ClientConnector> userDB {
         sqlConnector;
     }
-    string dbName = config:getGlobalValue("DB_NAME");
+    // TODO: Uncomment reading config file logic and delete hardcoded value
+    // TODO: Currently the problem is Testerina is not reading values from config file - So cannot write test cases
+    //string dbName = config:getGlobalValue("DB_NAME");
+    string dbName = "userDB";
+
     int updateStatus1 = dbUtil:createDatabase(sqlConnector, dbName);
     log:printInfo("---------------------------------- Initialization ----------------------------------");
     log:printInfo("Creating database '" + dbName + "' if not exists - Status: " + updateStatus1);
@@ -73,5 +76,9 @@ function initializeDB () (boolean) {
     int updateStatus4 = userDB.update("CREATE TABLE USERINFO(USERNAME VARCHAR(10), PASSWORD VARCHAR(20),
                                 AGE INT, COUNTRY VARCHAR(255), PRIMARY KEY (USERNAME))", null);
     log:printInfo("Creating table 'USERINFO' - Status: " + updateStatus4 + "\n");
+
+    if (updateStatus1 != 1 && updateStatus2 != 0 && updateStatus3 != 0 && updateStatus4 != 0) {
+        return false;
+    }
     return true;
 }
